@@ -4,5 +4,6 @@ data class CustomerDto(
         val id : String,
         val nane : String,
         val surName: String,
+        val accounts: Set<CustomerAccountDto>
 
 ){}

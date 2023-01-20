@@ -12,7 +12,7 @@ data class Account(
         @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val id:String?,
         val balance: BigDecimal? = BigDecimal.ZERO,
-        val creation: LocalDateTime,
+        val creationDate: LocalDateTime,
 
         @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
         @JoinColumn(name = "customer", nullable = false)
