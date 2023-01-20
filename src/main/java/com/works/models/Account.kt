@@ -1,7 +1,6 @@
 package com.works.models
 
 import org.hibernate.annotations.GenericGenerator
-import org.hibernate.annotations.GenericGenerators
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -22,8 +21,30 @@ data class Account(
         @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
         val transaction: Set<Transaction>
 
- 
 
 
 
-)
+) {
+        override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (javaClass != other?.javaClass) return false
+
+                other as Account
+
+                if (id != other.id) return false
+                if (balance != other.balance) return false
+                if (creation != other.creation) return false
+                if (customer != other.customer) return false
+                if (transaction != other.transaction) return false
+
+                return true
+        }
+
+        override fun hashCode(): Int {
+                var result = id?.hashCode() ?: 0
+                result = 31 * result + (balance?.hashCode() ?: 0)
+                result = 31 * result + creation.hashCode()
+                result = 31 * result + (customer?.hashCode() ?: 0)
+                return result
+        }
+}
