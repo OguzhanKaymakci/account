@@ -1,9 +1,13 @@
 package com.works.models
 
+import jdk.nashorn.internal.objects.annotations.Getter
+import jdk.nashorn.internal.objects.annotations.Setter
 import org.hibernate.annotations.GenericGenerator
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import javax.persistence.*
+
+
 
 @Entity
 data class Transaction(
@@ -28,7 +32,7 @@ data class Transaction(
 
 
 
-
+//kotlin class lar içerisinde aşağıdaki gibi class lar açılabilir.
 enum class TransactionType{
     INITIAL,TRANSFER
 }
